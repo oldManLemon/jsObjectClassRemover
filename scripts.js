@@ -28,9 +28,9 @@
   elem.style.display = 'none';
 } */
 
-function toggleRemoveal(elems){
+function toggleIDremoval(elems){
     if (elems.style.display === 'none') {
-        console.log('here')
+        
         elems.style.display = 'block';
     }else{
        elems.style.display = 'none'; 
@@ -45,17 +45,14 @@ function Elementals(id, htmlClass) {
     this.remove = function () {
         if (this.class != undefined) {
             elems = document.getElementsByClassName(this.class);
-            console.log("elems");
+            for( var i = 0; i < elems.length;i++){
+                toggleIDremoval(elems[i]);
+            }
         }
         else if (this.id != undefined) {
             elems = document.getElementById(this.id);
-            if (elems.style.display === 'none') {
-                console.log('here')
-                elems.style.display = 'block';
-            }else{
-               elems.style.display = 'none'; 
-            }
             
+            toggleIDremoval(elems);
 
         }
         else {
@@ -68,5 +65,8 @@ function Elementals(id, htmlClass) {
 }
 
 var pink = new Elementals('remove');
+var blue = new Elementals(undefined, 'blue');
 
 //pink.remove();
+
+
